@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Біблія Огієнка (УБО) — Локальне читання</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-primary: #ffffff;
@@ -22,8 +25,8 @@
       --verse-num: #2563eb;
       --highlight: #fef08a;
       --sidebar-width: 350px;
-      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --reader-font: "Georgia", "Cambria", "Times New Roman", serif;
+      --font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --reader-font: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       --font-size: 19px;
       --line-height: 1.8;
       --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -513,6 +516,10 @@
       font-family: var(--reader-font);
       font-size: var(--font-size);
       line-height: var(--line-height);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: "liga" 1, "calt" 1, "kern" 1;
     }
 
     .verse-p {
@@ -704,7 +711,6 @@
       <div class="brand">
         <span class="brand-icon">📖</span>
         <span>Біблія (Огієнка)</span>
-        <span class="brand-sub">Офлайн</span>
       </div>
 
       <div class="search-input-wrapper">
@@ -763,8 +769,8 @@
             <div class="setting-group">
               <div class="setting-label">Шрифт тексту</div>
               <div class="btn-group">
-                <button class="btn-group-item active" data-font-val="serif">З засічками</button>
-                <button class="btn-group-item" data-font-val="sans">Без засічок</button>
+                <button class="btn-group-item active" data-font-val="sans">Без засічок</button>
+                <button class="btn-group-item" data-font-val="serif">З засічками</button>
               </div>
             </div>
 
@@ -1101,7 +1107,7 @@
         btn.addEventListener('click', () => {
           document.querySelectorAll('[data-font-val]').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          const font = btn.dataset.fontVal === 'serif' ? '"Georgia", "Cambria", serif' : '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+          const font = btn.dataset.fontVal === 'serif' ? '"PT Serif", "Times New Roman", serif' : '"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
           document.documentElement.style.setProperty('--reader-font', font);
           localStorage.setItem('bible_font', btn.dataset.fontVal);
         });
@@ -1240,8 +1246,8 @@
         b.classList.toggle('active', b.dataset.themeVal === theme);
       });
 
-      const font = localStorage.getItem('bible_font') || 'serif';
-      const fontVal = font === 'serif' ? '"Georgia", "Cambria", serif' : '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      const font = localStorage.getItem('bible_font') || 'sans';
+      const fontVal = font === 'serif' ? '"PT Serif", "Times New Roman", serif' : '"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
       document.documentElement.style.setProperty('--reader-font', fontVal);
       document.querySelectorAll('[data-font-val]').forEach(b => {
         b.classList.toggle('active', b.dataset.fontVal === font);
