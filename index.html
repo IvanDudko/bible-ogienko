@@ -122,6 +122,13 @@
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.15s;
+    }
+
+    .brand:hover {
+      opacity: 0.8;
     }
 
     .brand-icon {
@@ -674,8 +681,206 @@
       transform: translateY(0);
     }
 
+    /* Home View Styling */
+    .home-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 30px 24px 80px;
+      display: block;
+    }
+
+    .home-container {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .home-hero {
+      text-align: center;
+      margin-bottom: 36px;
+      padding: 30px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .home-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .home-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .home-quick-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .home-nav-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .home-nav-chip:hover {
+      background: var(--accent);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .testament-block {
+      margin-bottom: 40px;
+    }
+
+    .testament-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .testament-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .testament-badge {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-hover);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .home-books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .home-book-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      transition: all 0.15s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .home-book-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .home-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .home-card-num {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--bg-hover);
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
+
+    .home-card-titles {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .home-card-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .home-card-fullname {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .home-card-meta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .home-card-chapters {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
+      gap: 5px;
+    }
+
+    .home-ch-pill {
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-hover);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.12s;
+      user-select: none;
+    }
+
+    .home-ch-pill:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
     /* Responsive */
     @media (max-width: 860px) {
+      .home-scroll {
+        padding: 16px 12px 60px;
+      }
+
+      .home-books-grid {
+        grid-template-columns: 1fr;
+      }
       #sidebar {
         position: fixed;
         left: 0;
@@ -708,7 +913,7 @@
   <!-- Left Sidebar Navigation -->
   <aside id="sidebar">
     <div class="sidebar-header">
-      <div class="brand">
+      <div class="brand" id="brandHomeBtn" title="Перейти на головну сторінку">
         <span class="brand-icon">📖</span>
         <span>Біблія (Огієнка)</span>
       </div>
@@ -737,6 +942,7 @@
     <header class="top-toolbar">
       <div class="toolbar-left">
         <button class="toggle-sidebar-btn" id="toggleSidebarBtn">☰ Книги</button>
+        <button class="action-btn" id="toolbarHomeBtn" title="На головну сторінку">🏠 <span class="hide-mobile">Головна</span></button>
         <div class="current-chapter-title" id="toolbarTitle">Завантаження...</div>
       </div>
 
@@ -795,7 +1001,37 @@
       </div>
     </header>
 
-    <div class="reader-scroll" id="readerScroll">
+    <!-- Home Page Overview -->
+    <div class="home-scroll" id="homeView">
+      <div class="home-container">
+        <div class="home-hero">
+          <h1 class="home-title">Біблія в перекладі Івана Огієнка (УБО)</h1>
+          <p class="home-subtitle">Повний канонічний текст Святого Письма: 66 книг, 1 189 розділів, 31 170 віршів</p>
+          <div class="home-quick-nav">
+            <a href="#otSection" class="home-nav-chip">📜 Старий Заповіт (39 книг)</a>
+            <a href="#ntSection" class="home-nav-chip">✝️ Новий Заповіт (27 книг)</a>
+          </div>
+        </div>
+
+        <div class="testament-block" id="otSection">
+          <div class="testament-header">
+            <h2 class="testament-title">📜 Старий Заповіт</h2>
+            <span class="testament-badge">39 книг • 929 розділів</span>
+          </div>
+          <div class="home-books-grid" id="otBooksGrid"></div>
+        </div>
+
+        <div class="testament-block" id="ntSection">
+          <div class="testament-header">
+            <h2 class="testament-title">✝️ Новий Заповіт</h2>
+            <span class="testament-badge">27 книг • 260 розділів</span>
+          </div>
+          <div class="home-books-grid" id="ntBooksGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reader-scroll" id="readerScroll" style="display: none;">
       <div class="reader-container">
         <div class="reader-chapter-header">
           <div class="book-super-title" id="bookSuperTitle">...</div>
@@ -871,20 +1107,30 @@
       }
       loadSettings();
       renderBooksList();
-      parseHash();
-      loadChapter(currentBookId, currentChapter);
+      renderHomeView();
       setupEvents();
+
+      const hasChapter = parseHash();
+      if (hasChapter) {
+        loadChapter(currentBookId, currentChapter);
+      } else {
+        showHomePage();
+      }
     }
 
     function parseHash() {
       const hash = window.location.hash.slice(1);
-      if (hash) {
+      if (hash && hash !== 'home') {
         const params = new URLSearchParams(hash);
         const b = parseInt(params.get('book'));
         const c = parseInt(params.get('chapter'));
-        if (b >= 1 && b <= 66) currentBookId = b;
-        if (c >= 1) currentChapter = c;
+        if (b >= 1 && b <= 66 && c >= 1) {
+          currentBookId = b;
+          currentChapter = c;
+          return true;
+        }
       }
+      return false;
     }
 
     function updateHash() {
@@ -905,9 +1151,9 @@
       });
 
       filtered.forEach(book => {
-        const isCurrent = book.id === currentBookId;
         const item = document.createElement('div');
-        item.className = `book-item ${isCurrent ? 'active expanded' : ''}`;
+        // All books are collapsed by default
+        item.className = 'book-item';
         item.id = `sidebar-book-${book.id}`;
 
         // Header Row (Clicking toggles chapter list!)
@@ -937,7 +1183,7 @@
 
         for (let ch = 1; ch <= book.chapters_count; ch++) {
           const pill = document.createElement('div');
-          pill.className = `chapter-pill ${isCurrent && ch === currentChapter ? 'active' : ''}`;
+          pill.className = 'chapter-pill';
           pill.textContent = ch;
           pill.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -958,6 +1204,61 @@
       });
     }
 
+    function renderHomeView() {
+      const otGrid = document.getElementById('otBooksGrid');
+      const ntGrid = document.getElementById('ntBooksGrid');
+      otGrid.innerHTML = '';
+      ntGrid.innerHTML = '';
+
+      window.BIBLE_DATA.forEach(book => {
+        const card = document.createElement('div');
+        card.className = 'home-book-card';
+        card.innerHTML = `
+          <div class="home-card-header">
+            <span class="home-card-num">${book.id}</span>
+            <div class="home-card-titles">
+              <div class="home-card-name">${book.name}</div>
+              <div class="home-card-fullname" title="${book.name_full}">${book.name_full}</div>
+            </div>
+            <span class="home-card-meta">${book.chapters_count} розд.</span>
+          </div>
+          <div class="home-card-chapters"></div>
+        `;
+
+        const chContainer = card.querySelector('.home-card-chapters');
+        for (let ch = 1; ch <= book.chapters_count; ch++) {
+          const pill = document.createElement('button');
+          pill.className = 'home-ch-pill';
+          pill.textContent = ch;
+          pill.title = `${book.name}, Розділ ${ch}`;
+          pill.addEventListener('click', () => {
+            loadChapter(book.id, ch);
+          });
+          chContainer.appendChild(pill);
+        }
+
+        if (book.testament === 'OT') {
+          otGrid.appendChild(card);
+        } else {
+          ntGrid.appendChild(card);
+        }
+      });
+    }
+
+    function showHomePage() {
+      window.location.hash = 'home';
+      document.getElementById('homeView').style.display = 'block';
+      document.getElementById('readerScroll').style.display = 'none';
+      toolbarTitle.textContent = '📖 Біблія (Огієнка) — Зміст та книги';
+      prevBtn.disabled = true;
+      nextBtn.disabled = true;
+      document.querySelectorAll('.book-item').forEach(el => el.classList.remove('active'));
+      document.getElementById('homeView').scrollTop = 0;
+      if (window.innerWidth <= 860) {
+        sidebar.classList.remove('open');
+      }
+    }
+
     function loadChapter(bookId, chapterNum, scrollToVerseId = null) {
       const book = window.BIBLE_DATA.find(b => b.id === bookId);
       if (!book) return;
@@ -965,6 +1266,10 @@
       currentBookId = bookId;
       currentChapter = chapterNum;
       updateHash();
+
+      // Switch to Reader View
+      document.getElementById('homeView').style.display = 'none';
+      document.getElementById('readerScroll').style.display = 'flex';
 
       toolbarTitle.textContent = `${book.name}, Розділ ${chapterNum}`;
       bookSuperTitle.textContent = book.name_full;
@@ -1048,6 +1353,13 @@
     }
 
     function setupEvents() {
+      // Home navigation clicks
+      const brandBtn = document.getElementById('brandHomeBtn');
+      if (brandBtn) brandBtn.addEventListener('click', showHomePage);
+
+      const toolbarHomeBtn = document.getElementById('toolbarHomeBtn');
+      if (toolbarHomeBtn) toolbarHomeBtn.addEventListener('click', showHomePage);
+
       const goPrev = () => { if (prevChapterTarget) loadChapter(prevChapterTarget.book_id, prevChapterTarget.chapter); };
       const goNext = () => { if (nextChapterTarget) loadChapter(nextChapterTarget.book_id, nextChapterTarget.chapter); };
 
